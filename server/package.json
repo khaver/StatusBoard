@@ -1,0 +1,19 @@
+{
+  "name": "status-board",
+  "version": "0.0.1",
+  "description": "API to keep track of Jenkins build statuses",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Kyle Haver",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect": "^3.4.1",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "serve-static": "^1.10.2"
+  }
+}
