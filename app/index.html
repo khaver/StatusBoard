@@ -9,27 +9,30 @@
 </head>
 
 <body>
-    <div ng-app='app'>
-        <div ng-controller='MainController as main'>
-<!--            {{status}}-->
-        <div class='container'>
-            <h1>{{main.title}}</h1>
-        </div>
-        <div>
-          <table class=“table table-condensed table-hover”>
-                <tr>
-                    <th>Job</th>
-                    <th>Status</th>
-                    <th>Person</th>
+    <div class='container'>
+        <div ng-app='app'>
+            <div ng-controller='MainController as main'>
+            <div class='container'>
+                <h1>{{main.title}}</h1>
+            </div>
+            <div class='table-responsive'>
+              <table class=“table table-striped”>
+                    <tr>
+                        <th class='col-md-4 h2'>Job</th>
+                        <th class='col-md-4 h2'>Status</th>
+                        <th class='col-md-4 h2'>Person</th>
 
-                </tr>
-                <tr ng-repeat='status in main.statuses'>
-                    <td>{{status.name}}</td>
-                    <td>{{status.status}}</td>
-                    <td>{{status.shamer}}</td>
-                </tr>
-            </table>
-        </div>
+                    </tr>
+                    <tr ng-repeat='status in main.statuses'
+                        ng-class="{'text-success': status.status === 'SUCCESS',
+                                   'text-danger': status.status === 'FAILURE'}">
+                        <td>{{status.name}}</td>
+                        <td>{{status.status}}</td>
+                        <td>{{status.shamer}}</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
         </div>
     </div>
 </body>
