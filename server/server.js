@@ -2,12 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var app = express();
+var path = require("path")
 
 app.use(bodyParser.json());
 
 
 var fileName = "statuses.json"
 var statuses = {}
+app.use(express.static(__dirname + '/../app')); 
 
 app.post('/statusBoard', function (req, res) {
   res.send('POST request: ' + JSON.stringify(req.body));
@@ -27,7 +29,12 @@ app.post('/statusBoard', function (req, res) {
 
 app.get('/Statuses', function (req, res) {
   console.log("Get statuses request: " + req.body)
-  res.send(JSON.stringify(JSON.stringify(statuses)));
+  res.json(statuses);
+});
+
+app.get('/', function(req, res) {
+  var filePath = path.join(__dirname + '/../app/index.html');
+  res.sendFile(filePath)
 });
 
 app.listen(3000, function () {

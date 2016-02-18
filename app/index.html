@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
+<head lang='en'>
+    <meta charset='UTF-8'>
     <title>Status Board</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="main.ctrl.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.js'></script>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <script src='app.js'></script>
 </head>
-<body ng-app='app' ng-controller='MainController as main'>
-    <div class='container'>
-        <h1>{{main.title}}</h1>
-    </div>
-    <div>
-      <table class=“table table-condensed table-hover”>
-            <tr>
-                <th>Job</th>
-                <th>Status</th>
-                <th>Person</th>
 
-            </tr>
-            <tr ng-repeat="status in statuses">
-                <td>{{status.name}}</td>
-                <td>{{status.status}}</td>
-                <td>{{status.shamer}}</td>
-            </tr>
-        </table>
+<body>
+    <div ng-app='app'>
+        <div ng-controller='MainController as main'>
+<!--            {{status}}-->
+        <div class='container'>
+            <h1>{{main.title}}</h1>
+        </div>
+        <div>
+          <table class=“table table-condensed table-hover”>
+                <tr>
+                    <th>Job</th>
+                    <th>Status</th>
+                    <th>Person</th>
+
+                </tr>
+                <tr ng-repeat='status in main.statuses'>
+                    <td>{{status.name}}</td>
+                    <td>{{status.status}}</td>
+                    <td>{{status.shamer}}</td>
+                </tr>
+            </table>
+        </div>
+        </div>
     </div>
 </body>
 </html>
