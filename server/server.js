@@ -25,6 +25,11 @@ app.post('/statusBoard', function (req, res) {
   console.log("Statuses " + JSON.stringify(statuses));
 });
 
+app.get('/Statuses', function (req, res) {
+  console.log("Get statuses request: " + req.body)
+  res.send(JSON.stringify(JSON.stringify(statuses)));
+});
+
 app.listen(3000, function () {
   console.log("Loading old statuses");
   statuses = {}
