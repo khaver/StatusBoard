@@ -29,7 +29,7 @@ app.post('/statusBoard', function (req, res) {
 
 app.get('/Statuses', function (req, res) {
   console.log("Get statuses request: " + req.body)
-  res.header("Access-Control-Allow-Origin": "*");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.json(statuses);
 });
