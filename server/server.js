@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 var fileName = "statuses.json"
 var statuses = {}
-app.use(express.static(__dirname + '/../app')); 
+app.use(express.static(__dirname + '/../app'));
 
 app.post('/statusBoard', function (req, res) {
   res.send('POST request: ' + JSON.stringify(req.body));
@@ -29,6 +29,8 @@ app.post('/statusBoard', function (req, res) {
 
 app.get('/Statuses', function (req, res) {
   console.log("Get statuses request: " + req.body)
+  res.header("Access-Control-Allow-Origin": "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.json(statuses);
 });
 
