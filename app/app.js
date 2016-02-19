@@ -4,10 +4,11 @@ myApp.controller('MainController', ['$scope','$http', function($scope, $http, $i
     var vm = this;
     vm.title = 'Status Board';
     function updateStatuses() {
-      $http.get('http://khaver.mynetgear.com:3000/Statuses', {"headers": {'Access-Control-Allow-Origin':'*', 'Content-Type': 'application/json'}}).then(function(res) {
+      $http.get('http://khaver.mynetgear.com:3000/Statuses').then(function(res) {
         console.log("Response: " + JSON.stringify(res));
-        return JSON.parse(res.body);
+        vm.statuses = res.data;
       })
     }
-    vm.statuses = updateStatuses();//$interval(updateStatuses, 3000);
+    updateStatuses();
+    //$interval(updateStatuses(), 3000);
 }]);

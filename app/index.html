@@ -18,14 +18,15 @@
             <div class='table-responsive'>
               <table class=“table table-striped”>
                     <tr>
-                        <th class='col-md-4 h2'>Job</th>
+                        <th class='col-md-6 h2'>Job</th>
                         <th class='col-md-4 h2'>Status</th>
                         <th class='col-md-4 h2'>Person</th>
 
                     </tr>
                     <tr ng-repeat='status in main.statuses'
                         ng-class="{'text-success': status.status === 'SUCCESS',
-                                   'text-danger': status.status === 'FAILURE'}">
+                                   'text-danger': status.status === 'FAILURE'}",
+                        class="h3">
                         <td>{{status.name}}</td>
                         <td>{{status.status}}</td>
                         <td>{{status.shamer}}</td>
