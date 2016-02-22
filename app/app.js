@@ -10,6 +10,6 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
         $scope.statuses = data;
       })
     };
-//    updateStatuses()
+    updateStatuses()
     $interval(updateStatuses, 300000);
 }]);
