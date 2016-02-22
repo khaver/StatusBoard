@@ -27,8 +27,9 @@ app.post('/statusBoard', function (req, res) {
                  status: req.body.result,
                  shamer: shamer}
 
-  console.log("New Status: " + status.name + " " + status)
+  console.log("New Status: " + status.name + " " + JSON.stringify(status));
   statuses[status.name] = status
+  console.log("Statuses: " + statuses);
   fs.writeFile(fileName, JSON.stringify(statuses), function(err) {
     if (err) return console.log(err);
   });
