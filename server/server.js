@@ -15,9 +15,17 @@ app.post('/statusBoard', function (req, res) {
   res.send('POST request: ' + JSON.stringify(req.body));
 
   var name = req.body.fullDisplayName.split("#")[0].trim();
+
+  var shamer = "";
+  for (action in req.body.actions) {
+    if (action == "causes") {
+      shamer = action[0]['username'];
+    }
+  }
+
   var status = { name: name,
                  status: req.body.result,
-                 shamer: req.body.actions[0].causes[0]['userName']}
+                 shamer: shamer}
 
   statuses[status.name] = status
   fs.writeFile(fileName, JSON.stringify(statuses), function(err) {
