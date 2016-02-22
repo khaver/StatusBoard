@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 
 var fileName = "statuses.json"
-var statuses = {}
+var statuses = []
 app.use(express.static(__dirname + '/../app'));
 
 app.post('/statusBoard', function (req, res) {
@@ -28,14 +28,12 @@ app.post('/statusBoard', function (req, res) {
                  status: req.body.result,
                  shamer: shamer}
 
-  console.log("New Status: " + status.name + " " + JSON.stringify(status));
   for (var i=0; i< statuses.length; i++) {
     if (statuses[i].name == status.name) {
       statuses.splice(i,1);
     }
   }
   statuses.push(status);
-  console.log("Statuses: " + statuses);
   fs.writeFile(fileName, JSON.stringify(statuses), function(err) {
     if (err) return console.log(err);
   });
@@ -57,7 +55,7 @@ app.get('/', function(req, res) {
 
 app.listen(3000, function () {
   console.log("Loading old statuses");
-  statuses = {}
+  statuses = []
   statuses = JSON.parse(fs.readFileSync(fileName, 'utf8'));
   console.log("Loaded statuses: " + JSON.stringify(statuses));
   console.log('Status Board listening on port 3000!');
