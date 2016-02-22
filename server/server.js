@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/../app'));
 
 app.post('/statusBoard', function (req, res) {
   res.send('POST request: ' + JSON.stringify(req.body));
-
+  console.log("Received Json: " + JSON.stringify(req.body));
   var name = req.body.fullDisplayName.split("#")[0].trim();
 
   var shamer = "";
@@ -27,6 +27,7 @@ app.post('/statusBoard', function (req, res) {
                  status: req.body.result,
                  shamer: shamer}
 
+  console.log("New Status: " + status.name + " " + status)
   statuses[status.name] = status
   fs.writeFile(fileName, JSON.stringify(statuses), function(err) {
     if (err) return console.log(err);
