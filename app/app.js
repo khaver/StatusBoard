@@ -5,11 +5,11 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
     $scope.title = 'Status Board';
     
     var updateStatuses = function() {
-      $http.get('http://khaver.mynetgear.com:3000/Statuses').success(function(res) {
-        console.log("Response: " + JSON.stringify(res));
-        $scope.statuses = res;
+      $http.get('http://khaver.mynetgear.com:3000/Statuses').success(function(data, status, headers, config) {
+        console.log("Response: " + JSON.stringify(data));
+        $scope.statuses = data;
       })
     };
-    updateStatuses()
-//    $interval(updateStatuses(), 3000);
+//    updateStatuses()
+    $interval(updateStatuses, 3000);
 }]);
