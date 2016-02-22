@@ -13,7 +13,7 @@
         <div ng-app='app'>
             <div ng-controller='MainController as main'>
             <div class='container'>
-                <h1>{{main.title}}</h1>
+                <h1>{{title}}</h1>
             </div>
             <div class='table-responsive'>
               <table class=“table table-striped”>
@@ -23,7 +23,7 @@
                         <th class='col-md-4 h2'>Person</th>
 
                     </tr>
-                    <tr ng-repeat='status in main.statuses'
+                    <tr ng-repeat='status in statuses'
                         ng-class="{'text-success': status.status === 'SUCCESS',
                                    'text-danger': status.status === 'FAILURE'}",
                         class="h3">
