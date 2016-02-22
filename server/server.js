@@ -18,8 +18,10 @@ app.post('/statusBoard', function (req, res) {
 
   var shamer = "";
   for (action in req.body.actions) {
-    if (action == "causes") {
-      shamer = action[0]['username'];
+      var test = action;
+      console.log("action " + JSON.stringify(req.body.actions));
+      if (action.causes) {
+        shamer = action.causes[0]['userName'];
     }
   }
 
