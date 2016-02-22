@@ -17,15 +17,10 @@ app.post('/statusBoard', function (req, res) {
   var name = req.body.fullDisplayName.split("#")[0].trim();
 
   var shamer = "";
-//  console.log("*****" + JSON.stringify(req.body.actions[1].causes[0].userName));
-//  for (action in req.body.actions) {
-    for(var i=0; i< req.body.actions.length; i++){
-      var action = req.body.actions[i];
-//      var test = action;
-      console.log("TEST+++++" + JSON.stringify(action.causes));
-      if (typeof action.causes != "undefined") {
-        console.log("*****" + JSON.stringify(action.causes[0].userName));
-        shamer += action.causes[0]['userName'];
+  for(var i=0; i< req.body.actions.length; i++){
+    var action = req.body.actions[i];
+    if (typeof action.causes != "undefined") {
+      shamer += action.causes[0]['userName'];
     }
   }
 
@@ -34,6 +29,11 @@ app.post('/statusBoard', function (req, res) {
                  shamer: shamer}
 
   console.log("New Status: " + status.name + " " + JSON.stringify(status));
+  for (var i=0; i< statuses.length; i++) {
+    if (statuses[i].name == status.name) {
+      statuses.splice(i,1);
+    }
+  }
   statuses.push(status);
   console.log("Statuses: " + statuses);
   fs.writeFile(fileName, JSON.stringify(statuses), function(err) {
