@@ -9,30 +9,38 @@
 </head>
 
 <body>
-    <div class='container'>
+    <div ng-init="myStyle = allBuildsPass ? 'background-color: green' : 'background-color: green'"></div>
+    <div class='container' style="width: 100%;">
         <div ng-app='app'>
             <div ng-controller='MainController as main'>
-            <div class='container'>
+            <div class='header' ng-show="!allBuildsPass"
+                 style="background-color: green">
                 <h1>{{title}}</h1>
             </div>
-            <div class='table-responsive'>
-              <table class=“table table-striped”>
-                    <tr>
-                        <th class='col-md-6 h2'>Job</th>
-                        <th class='col-md-6 h2'>Status</th>
-                        <th class='col-md-6 h2'>Person</th>
-
-                    </tr>
-                    <tr ng-repeat='status in statuses'
-                        ng-class="{'text-success': status.status === 'SUCCESS',
-                                   'text-danger': status.status === 'FAILURE'}",
-                        class="h3">
-                        <td>{{status.name}}</td>
-                        <td>{{status.status}}</td>
-                        <td>{{status.shamer}}</td>
-                    </tr>
-                </table>
+            <div class='header' ng-show="allBuildsPass"
+                 style="background-color: red">
+                <h1>{{title}}</h1>
             </div>
+              <div class='container'>
+                <div class='table-responsive'>
+                  <table class=“table table-striped” style='overflow: hidden;'>
+                        <tr>
+                            <th class='col-md-6 h2'>Job</th>
+                            <th class='col-md-6 h2'>Status</th>
+                            <th class='col-md-6 h2'>Person</th>
+
+                        </tr>
+                        <tr ng-repeat='status in statuses'
+                            ng-class="{'text-success': status.status === 'SUCCESS',
+                                       'text-danger': status.status === 'FAILURE'}",
+                            class="h3">
+                            <td>{{status.name}}</td>
+                            <td>{{status.status}}</td>
+                            <td>{{status.shamer}}</td>
+                        </tr>
+                    </table>
+                </div>
+              </div>
             </div>
         </div>
     </div>

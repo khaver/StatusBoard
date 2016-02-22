@@ -8,6 +8,13 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
       $http.get('http://khaver.mynetgear.com:3000/Statuses').success(function(data, status, headers, config) {
         console.log("Response: " + JSON.stringify(data));
         $scope.statuses = data;
+        $scope.allBuildsPass = $scope.statuses.forEach(function(record){
+          if(record.status === 'SUCCESS'){
+            return true;   
+          } else {
+            return false;
+          }
+        });
       })
     };
     updateStatuses()
