@@ -12,6 +12,8 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
         console.log("Response: " + JSON.stringify(data));
         var successStatuses = [];
         $scope.statuses = [];
+        var resetInterval = 300000;
+        $scope.countDown = resetInterval * 0.001;
         
         for(var i=0; i<data.length; i++){
           if(data[i].status === 'SUCCESS'){
