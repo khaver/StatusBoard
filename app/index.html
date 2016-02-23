@@ -33,13 +33,17 @@
                         <tr ng-repeat='status in statuses'
                             ng-class="{'text-success': status.status === 'SUCCESS',
                                        'text-danger': status.status === 'FAILURE'}">
-                            <td style='text-overflow: ellipsis; font-size: 300%; pull-left; padding-left: 15px'>{{status.name}}</td>
-<!--                            <td style='pull-right; font-size: 300%'>{{status.status}}</td>-->
+                            <td style='text-overflow: ellipsis;
+                                       font-size: 300%; pull-left; padding-left: 15px'>
+                                {{status.name}}</td>
                             <td style='pull-right; font-size: 300%'>
-                            <i style='padding-left: 40px' ng-class="{'fa fa-thumbs-up fa-3': status.status === 'SUCCESS',
-                               'fa fa-thumbs-down fa-3': status.status === 'FAILURE'}"></i>
+                            <i style='padding-left: 40px'
+                               ng-class="{'glyphicon glyphicon-thumbs-up': status.status === 'SUCCESS',
+                               'glyphicon glyphicon-thumbs-down': status.status === 'FAILURE'}"></i>
                             </td>
-                            <td style='font-size: 300%; padding-left: 15px; padding-right: 15px; pull-right'>{{status.shamer}}</td>
+                            <td style='font-size: 300%; padding-left: 15px;
+                                       padding-right: 15px; pull-right'>
+                                {{status.shamer}}</td>
                         </tr>
                     </table>
                 </div>

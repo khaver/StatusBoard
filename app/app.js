@@ -10,17 +10,7 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
         console.log("Response: " + JSON.stringify(data));
         var successStatuses = [];
         var statusArray = data;
-          console.log(data);
-//        data.forEach(function(stat){
-//          if(stat.status === 'SUCCESS'){
-//            successStatuses.push(stat);   
-//          } else if(stat.status === 'FAILURE'){
-//            $scope.statuses.push(stat);      
-//          }
-//        });
-//        $scope.statuses.concat(successStatuses);
         for(var i=0; i<data.length; i++){
-            console.log(data[i]);
           if(data[i].status === 'SUCCESS'){
             successStatuses.push(data[i]);
           } else if (data[i].status === 'FAILURE'){
