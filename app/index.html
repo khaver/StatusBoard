@@ -14,29 +14,32 @@
         <div ng-app='app'>
             <div ng-controller='MainController as main'>
             <div class='header' ng-show="!allBuildsPass"
-                 style="background-color: green; color:white">
+                 style="background-color: green; color: white">
                 <h1>{{title}}</h1>
             </div>
             <div class='header' ng-show="allBuildsPass"
-                 style="background-color: red">
+                 style="background-color: red; color: white">
                 <h1>{{title}}</h1>
             </div>
-              <div class='container'>
+              <div class='col-md-12'>
                 <div class='table-responsive'>
                   <table class=“table table-striped” style='overflow: hidden;'>
                         <tr>
-                            <th class='col-md-6 h2'>Job</th>
-                            <th class='col-md-6 h2'>Status</th>
-                            <th class='col-md-6 h2'>Person</th>
+                            <th class='col-md-8 h1' style='pull-left'>Job</th>
+                            <th class='col-md-1 h1'>Status</th>
+                            <th class='col-md-3 h1' style='pull-right'>Person</th>
 
                         </tr>
                         <tr ng-repeat='status in statuses'
                             ng-class="{'text-success': status.status === 'SUCCESS',
-                                       'text-danger': status.status === 'FAILURE'}",
-                            class="h3">
-                            <td>{{status.name}}</td>
-                            <td>{{status.status}}</td>
-                            <td>{{status.shamer}}</td>
+                                       'text-danger': status.status === 'FAILURE'}">
+                            <td style='text-overflow: ellipsis; font-size: 300%; pull-left; padding-left: 15px'>{{status.name}}</td>
+<!--                            <td style='pull-right; font-size: 300%'>{{status.status}}</td>-->
+                            <td style='pull-right; font-size: 300%'>
+                            <i style='padding-left: 40px' ng-class="{'fa fa-thumbs-up fa-3': status.status === 'SUCCESS',
+                               'fa fa-thumbs-down fa-3': status.status === 'FAILURE'}"></i>
+                            </td>
+                            <td style='font-size: 300%; padding-left: 15px; padding-right: 15px; pull-right'>{{status.shamer}}</td>
                         </tr>
                     </table>
                 </div>
