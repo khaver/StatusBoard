@@ -17,7 +17,6 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
             $scope.statuses.push(data[i]);
           }
         }
-        $scope.statuses = [];
         $scope.statuses = $scope.statuses.concat(successStatuses);
           
         $scope.allBuildsPass = $scope.statuses.some(function(record){
