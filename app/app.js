@@ -26,6 +26,13 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
         });
       })
     };
+    
+    $scope.clock = { time: "", interval: 1000 };
+
+    $interval(function () { 
+      $scope.clock.time = Date.now();}, 
+      $scope.clock.interval);
+    
     updateStatuses();
     $interval(updateStatuses, 300000);
 }]);

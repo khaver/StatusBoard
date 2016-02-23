@@ -16,10 +16,12 @@
             <div class='header' ng-show="!allBuildsPass"
                  style="background-color: green; color: white">
                 <h1>{{title}}</h1>
+                <h2 style='display:inline; padding-left: 50px'>{{clock.time | date:'medium'}}</h2>
             </div>
             <div class='header' ng-show="allBuildsPass"
                  style="background-color: red; color: white">
-                <h1>{{title}}</h1>
+                <h1 style='text-align: left; display:inline'>{{title}}</h1>
+                <h2 style='display:inline; padding-left: 50px'>{{clock.time | date:'medium'}}</h2>
             </div>
               <div class='col-md-12'>
                 <div class='table-responsive'>
