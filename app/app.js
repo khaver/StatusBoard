@@ -39,3 +39,9 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
     updateStatuses();
     $interval(updateStatuses, 300000);
 }]);
+
+myApp.filter('secondsToDateTime', [function() {
+    return function(seconds) {
+        return new Date(1970, 0, 1).setSeconds(seconds);
+    };
+}])
