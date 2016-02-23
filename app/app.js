@@ -4,13 +4,14 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
     var vm = this;
     $scope.title = 'Status Board';
     $scope.statuses = [];
+    var resetInterval = 300000;
+    $scope.countDown = resetInterval * 0.001;
 
     var updateStatuses = function() {
       $http.get('http://khaver.mynetgear.com:3000/Statuses').success(function(data, headers, config) {
         console.log("Response: " + JSON.stringify(data));
         var successStatuses = [];
         $scope.statuses = [];
-        $scope.countDown = 300;
         
         for(var i=0; i<data.length; i++){
           if(data[i].status === 'SUCCESS'){
@@ -37,7 +38,7 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
       $scope.clock.interval);
     
     updateStatuses();
-    $interval(updateStatuses, 300000);
+    $interval(updateStatuses, resetInterval);
 }]);
 
 myApp.filter('secondsToDateTime', [function() {
