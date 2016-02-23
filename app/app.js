@@ -10,6 +10,8 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
         console.log("Response: " + JSON.stringify(data));
         var successStatuses = [];
         $scope.statuses = [];
+        $scope.countDown = 300;
+        
         for(var i=0; i<data.length; i++){
           if(data[i].status === 'SUCCESS'){
             successStatuses.push(data[i]);
@@ -30,7 +32,8 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
     $scope.clock = { time: "", interval: 1000 };
 
     $interval(function () { 
-      $scope.clock.time = Date.now();}, 
+      $scope.clock.time = Date.now();
+      $scope.countDown -= 1}, 
       $scope.clock.interval);
     
     updateStatuses();
