@@ -23,6 +23,18 @@ app.post('/statusBoard', function (req, res) {
       shamer += action.causes[0]['userName'];
     }
   }
+  if (!shamer) {
+    shamer = "";
+      for(var j=0; j< jobJson.culprits.length; j++){
+        var culprit = jobJson.culprits[j];
+        if (typeof culprit.fullName != "undefined") {
+          culprit['fullName'].split(" ").forEach(function(name) {
+          shamer += name[0].toUpperCase() + name.slice(1) + " ";
+        });
+      }
+      shamer.trim();
+      }
+  }
 
   var status = { name: name,
                  status: req.body.result,
