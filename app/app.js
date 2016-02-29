@@ -16,6 +16,9 @@ myApp.controller('MainController', ['$scope','$http', '$interval', function($sco
         $scope.countDown = resetInterval * 0.001;
         
         for(var i=0; i<data.length; i++){
+          if(data[i].shamer === undefined){
+            data[i].shamer = 'Jenkins';
+          }
           if(data[i].status === 'SUCCESS'){
             successStatuses.push(data[i]);
           } else if (data[i].status === 'FAILURE'){
