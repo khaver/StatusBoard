@@ -10,18 +10,18 @@
 
 <body>
     <div ng-init="myStyle = allBuildsPass ? 'background-color: green' : 'background-color: green'"></div>
-    <div class='container' style="width: 100%;">
+    <div class='container' style="width: 100%; padding: 0px">
         <div ng-app='app'>
             <div ng-controller='MainController as main'>
             <div class='header' ng-show="!allBuildsPass"
                  style="background-color: #3C763D; color: white">
-                <h1 style='text-align: left; display:inline'>{{title}}</h1>
-                <h2 style='display:inline; padding-left: 50px'>{{clock.time | date:'medium'}}</h2>
-                <h2 style='display:inline; padding-left: 50px'>{{countDown}}</h2>
+                <h1 style='text-align: left; display:inline; padding-left: 10px'>{{title}}</h1>
+                <h2 style='display:inline; padding-left: 50px'>{{clock.time | date:'MM/dd/yyyy @ h:mma'}}</h2>
+                <h2 style='display:inline; padding-left: 50px'>Refresh in: {{countDown | secondsToDateTime | date:'mm:ss'}}</h2>
             </div>
             <div class='header' ng-show="allBuildsPass"
                  style="background-color: #A94442; color: white">
-                <h1 style='text-align: left; display:inline'>{{title}}</h1>
+                <h1 style='text-align: left; display:inline; padding-left: 10px'>{{title}}</h1>
                 <h2 style='display:inline; padding-left: 50px'>{{clock.time | date:'MM/dd/yyyy @ h:mma'}}</h2>
                 <h2 style='display:inline; padding-left: 50px'>Refresh in: {{countDown | secondsToDateTime | date:'mm:ss'}}</h2>
             </div>
